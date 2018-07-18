@@ -11,11 +11,13 @@
 <body>
     <div class="container" id="root">
         <h3>Identicon Generator</h3>
+        <h4>What kind of Icon is your word?</h4>
         <div>
             Input: <input v-on:input="onInput"/>
         </div>
         <div>
             Output:
+            {{ identicon }}
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -35,7 +37,7 @@
             }, 
             computed: { //Turn data into viewable values
                 identicon: function(){
-
+                    return jdenticon.toSvg(this.textInput, 200);
                 }
             }, 
             methods: { //These functions are used to change data
