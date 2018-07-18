@@ -14,12 +14,12 @@
         <h4>What kind of Icon is your word?</h4>
         <br>
         <div>
-            Input: <input v-on:input="onInput"/>
+            Input: <input v-on:input="onInput" v-model="textStuff"/>
         </div>
         <div>
             Output:
             <div v-html="identicon"></div>
-            <!-- <svg data-jdenticon-value="user127" width="80" height="80">
+            <!-- <svg v-bind:data-jdenticon-value="textStuff" width="200" height="200">
                 Fallback text or image for browsers not supporting inline svg.
             </svg> -->
         </div>
@@ -37,12 +37,13 @@
         new Vue({
             el: '#root',
             data: { // Initialize the original values
-                textInput: ''
+                textInput: '',
+                textStuff: ''
             }, 
             computed: { //Turn data into viewable values
-                identicon: function(){
-                    return jdenticon.toSvg(this.textInput, 200);
-                }
+                // identicon: function(){
+                //     return jdenticon.toSvg(this.textInput, 200);
+                // }
             }, 
             methods: { //These functions are used to change data
                 onInput: function(event){
