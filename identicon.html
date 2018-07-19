@@ -14,14 +14,14 @@
         <h4>What kind of Icon is your word?</h4>
         <br>
         <div>
-            Input: <input v-on:input="onInput" v-model="textStuff"/>
+            Input: <input v-on:input="onInput"/>
         </div>
         <div>
             Output:
             <div v-html="identicon"></div>
-            <!-- <svg v-bind:data-jdenticon-value="textStuff" width="200" height="200">
+            <svg v-bind:data-jdenticon-value="textInput" width="200" height="200">
                 Fallback text or image for browsers not supporting inline svg.
-            </svg> -->
+            </svg>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -37,23 +37,37 @@
         new Vue({
             el: '#root',
             data: { // Initialize the original values
-                textInput: '',
-                textStuff: ''
+                textInput: 'shark'
             }, 
             computed: { //Turn data into viewable values
-                // identicon: function(){
-                //     return jdenticon.toSvg(this.textInput, 200);
-                // }
+                identicon: function(){
+                    return (`<svg data-jdenticon-value="${this.textInput}" width="200" height="200">
+                            Fallback text or image for browsers not supporting inline svg.
+                            </svg>`);
+                     //return jdenticon.toSvg(this.textInput, 200);
+                }
             }, 
             methods: { //These functions are used to change data
                 onInput: function(event){
-                    console.log('onIput called');
-                    console.log(event);
-                    console.log(event.target.value);
                     this.textInput = event.target.value;
-                    console.log(textInput);
                 }
-            }
+            },
+            template: `
+                <div>
+                    <h3>Identicon Generator</h3>
+                    <h4>What kind of Icon is your word?</h4>
+                    <br>
+                    <div>
+                        Input: <input v-on:input="onInput"/>
+                    </div>
+                    <div>
+                        Output:
+                        <div v-html="identicon"></div>
+                        <svg v-bind:data-jdenticon-value="textInput" width="200" height="200">
+                            Fallback text or image for browsers not supporting inline svg.
+                        </svg>
+                    </div>
+                </div>`
         })
     </script>
 </body>
