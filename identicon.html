@@ -9,21 +9,7 @@
         crossorigin="anonymous">
 </head>
 <body>
-    <div class="container" id="root">
-        <h3>Identicon Generator</h3>
-        <h4>What kind of Icon is your word?</h4>
-        <br>
-        <div>
-            Input: <input v-on:input="onInput"/>
-        </div>
-        <div>
-            Output:
-            <div v-html="identicon"></div>
-            <svg v-bind:data-jdenticon-value="textInput" width="200" height="200">
-                Fallback text or image for browsers not supporting inline svg.
-            </svg>
-        </div>
-    </div>
+    <div class="container" id="root"></div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
